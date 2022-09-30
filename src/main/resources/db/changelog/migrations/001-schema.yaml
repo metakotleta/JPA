@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: "Roman Vukolov"
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone_number
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: city_of_living
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: person
+            columnNames: name, surname, age
+
+  - changeSet:
+      id: "002"
+      author: "Roman Vukolov"
+      comment: Add samples
+      changes:
+        - sqlFile:
+            path: sql/add-sample.sql
+            relativeToChangeLogFile: true
